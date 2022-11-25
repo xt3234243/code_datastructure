@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 时间复杂度和空间复杂度 都是O(n)
+      // 思路：用栈，匹配，如果匹配成功就出栈，最后栈为空，如果匹配不成功，栈不为空，就返回false
+      var isValid = function (s) {
+        var stack = [];
+        for (let i = 0; i < s.length; i++) {
+          const start = s[i]; //从第一个开始匹配
+          if (s[i] == "(" || s[i] == "{" || s[i] == "[") {
+            stack.push(s[i]);
+          } else {
+            // 如果不是（就是）那么就和前一个进行比对
+            const end = stack[stack.length - 1];
+            if (
+              (start == ")" && end == "(") ||
+              (start == "]" && end == "[") ||
+              (start == "}" && end == "{")
+            ) {
+              stack.pop();
+            } else {
+              return false;
+            }
+          }
+        }
+        return stack.length == 0;
+      };
+      console.log(isValid("(){}"));
+    </script>
+  </body>
+</html>

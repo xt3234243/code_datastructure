@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class MinHeap {
+        constructor() {
+          this.heap = [];
+        }
+        // 换位置
+        swap(i1, i2) {
+          const temp = this.heap[i1];
+          this.heap[i1] = this.heap[i2];
+          this.heap[i2] = temp;
+        }
+        // 找到父节点
+        getParentIndex(index) {
+          return Math.floor((index - 1) / 2);
+        }
+        // 上移操作
+        up(index) {
+          // 如果是0就不操作了
+          if (index == 0) return;
+          //如果不是0，找到父节点
+          const parentIndex = this.getParentIndex(index);
+          // 如果父元素大于当前元素。、,就开始移动
+          if (this.heap[parentIndex] > this.heap[index]) {
+            this.swap(parentIndex, index);
+            // 可能会换多次所以递归
+            this.up(parentIndex);
+          }
+        }
+        // 获取左侧子节点
+        getLeftIndex(index) {
+          return index * 2 + 1;
+        }
+        // 获取右侧子节点
+        getRightIndex(index) {
+          return index * 2 + 2;
+        }
+        // 下（后）移操作
+        down(index) {
+          const leftIndex = this.getLeftIndex(index);
+          const rightIndex = this.getRightIndex(index);
+          if (this.heap[leftIndex] < this.heap[index]) {
+            this.swap(leftIndex, index);
+            // 不断递归，不知道移动多少次
+            this.down(leftIndex);
+          }
+          if (this.heap[rightIndex] < this.heap[index]) {
+            this.swap(rightIndex, index);
+            this.down(rightIndex);
+          }
+        }
+        //  添加元素
+        insert(value) {
+          this.heap.push(value);
+          this.up(this.heap.length - 1);
+        }
+        // 删除堆顶
+        pop() {
+          //    把栈顶给删了，然后剩下元素下移
+          this.heap[0] = this.heap.pop();
+          this.down(0);
+        }
+        // 获取堆顶
+        peek() {
+          return this.heap[0];
+        }
+        size() {
+          return this.heap.length;
+        }
+      }
+      let arr = new MinHeap();
+      arr.insert(5);
+      arr.insert(4);
+      arr.insert(3);
+      arr.insert(1);
+      arr.pop();
+      console.log(arr);
+      console.log(arr.size());
+      console.log(arr.peek());
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function insertSort(arr) {
+        let len = arr.length;
+        for (let i = 1; i < len; i++) {
+          let temp = arr[i]; //3
+          let j = i - 1; //默认已排序的元素   i=1 j=0
+          // 在已经排序好的队列进行从后到前的扫描
+          while (j >= 0 && arr[j] > temp) {
+            //5>3
+            // 已排序的元素大于新元素,将该元素移动到下一个位置
+            arr[j + 1] = arr[j];
+            j--;
+          }
+          arr[j + 1] = temp;
+        }
+
+        return arr;
+      }
+      let arr = [5, 3, 4, 2, 1];
+      //   第一次 35421
+      // 第二次 34521
+      console.log(insertSort(arr));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 相当于把重复的元素删掉，把后面的位置一道重复的元素的位置，相当于覆盖掉
+      var deleteDuplicates = function (head) {
+        // 如果没有头
+        if (!head) {
+          return head;
+        }
+        let cur = head;
+        while (cur.next) {
+          if (cur.val == cur.next.val) {
+            // 相等，后面的覆盖前面的
+            cur.next = cur.next.next;
+          } else {
+            // 不相等往下找
+            cur = cur.next;
+          }
+        }
+        return head;
+      };
+    </script>
+  </body>
+</html>

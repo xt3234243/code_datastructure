@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 二叉树（只有左右）
+      const tree = {
+        val: "1",
+        left: {
+          val: "2",
+          left: { val: "4", left: null, right: null },
+          right: { val: "5", left: null, right: null },
+        },
+        right: {
+          val: "3",
+          left: { val: "6", left: null, right: null },
+          right: { val: "7", left: null, right: null },
+        },
+      };
+      //   递归方式实现
+      //   先序（前序）遍历   根左右
+      //   var preOrderTraversal = function (root) {
+      //     let arr = [];
+      //     var fun = (node) => {
+      //       if (node) {
+      //         // 先根节点
+      //         arr.push(node.val);
+      //         // 遍历左子树
+      //         fun(node.left);
+      //         // 遍历右子树
+      //         fun(node.right);
+      //       }
+      //     };
+      //     fun(root);
+      //     return arr;
+      //   };
+      //   console.log(preOrderTraversal(tree));
+
+      //   栈的形式
+      var preOrderTraversal = function (root) {
+        if (!root) return [];
+        let arr = [];
+        // 根节点入栈
+        let stack = [root];
+        while (stack.length) {
+          // 出栈
+          let o = stack.pop();
+          arr.push(o.val);
+          o.right && stack.push(o.right);
+          o.left && stack.push(o.left);
+        }
+
+        return arr;
+      };
+      console.log(preOrderTraversal(tree));
+    </script>
+  </body>
+</html>

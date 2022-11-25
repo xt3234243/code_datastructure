@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const tree1 = {
+        val: "1",
+        left: {
+          val: "2",
+          left: { val: "4", left: null, right: null },
+          right: { val: "5", left: null, right: null },
+        },
+        right: {
+          val: "3",
+          left: { val: "6", left: null, right: null },
+          right: { val: "7", left: null, right: null },
+        },
+      };
+      const tree2 = {
+        val: "1",
+        left: {
+          val: "2",
+          left: { val: "4", left: null, right: null },
+          right: { val: "5", left: null, right: null },
+        },
+        right: {
+          val: "3",
+          left: { val: "6", left: null, right: null },
+          right: { val: "7", left: null, right: null },
+        },
+      };
+
+      var isSameTree = function (p, q) {
+        if (p === null && q === null) return true;
+        if (p === null || q === null) return false;
+        if (p.val !== q.val) return false;
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+      };
+
+      console.log(isSameTree(tree1, tree2));
+    </script>
+  </body>
+</html>
