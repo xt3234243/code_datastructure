@@ -1,0 +1,25 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script>
+      // const _searchStrIndexOf = (str, target) => {
+      //    补全代码
+      //   console.log(str.split(target));
+      //   console.log(str.split(target).length);
+
+      //   return str.split(target).length - 1;
+      // };
+      // console.log(_searchStrIndexOf("32332323", "2"));
+      const _searchStrIndexOf = (str, target) => {
+        // 补全代码
+        let reg = new RegExp(target, "g");
+        console.log(reg);
+        console.log(str.match(reg));
+        return str.match(reg).length;
+      };
+      console.log(_searchStrIndexOf("32332323", "2"));
+    </script>
+  </body>
+</html>
