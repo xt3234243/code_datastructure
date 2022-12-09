@@ -8,17 +8,10 @@
   </head>
   <body>
     <script>
-      function duplicates(arr) {
-        var a = [];
-        for (i = 0; i < arr.length; i++) {
-          if (arr.indexOf(arr[i]) == i && arr.lastIndexOf(arr[i] !== i)) {
-            a.push(arr[i]);
-          }
-        }
-        return a;
+      function multiply(a, b) {
+        return parseFloat((a * b).toFixed(10));
       }
-      a = duplicates([1, 1, 2, 3]);
-      console.log(a);
+      console.log(multiply(2.3, 3.3));
     </script>
   </body>
 </html>
