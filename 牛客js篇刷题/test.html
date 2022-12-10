@@ -8,10 +8,11 @@
   </head>
   <body>
     <script>
-      function multiply(a, b) {
-        return parseFloat((a * b).toFixed(10));
+      function captureThreeNumbers(str) {
+        return str.match(/\d{3}/) || false;
       }
-      console.log(multiply(2.3, 3.3));
+
+      console.log(captureThreeNumbers(""));
     </script>
   </body>
 </html>
